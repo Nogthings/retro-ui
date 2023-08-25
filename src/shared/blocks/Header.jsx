@@ -1,10 +1,19 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import heart from '../../assets/heart.png';
 import SearchForm from './SearchForm';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [darkMode]); 
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -37,6 +46,14 @@ const Header = () => {
 
         </div>
         <div className='flex items-center justify-end gap-4'>
+          <div className='pr-2'>
+          <button
+          className="p-2 text-white"
+          onClick={() => setDarkMode(prevMode => !prevMode)}
+        >
+          {darkMode ? '🌑' : '🌕'}
+        </button>
+          </div>
           <SearchForm/>
           <a href="https://github.com/Nogthings/retro-ui" rel="noreferrer" target="_blank" className="inline-block text-zinc-800 dark:text-zinc-200 hover:text-yellow-400">
             <span className="sr-only"> GitHub </span>

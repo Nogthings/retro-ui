@@ -1,12 +1,21 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
-  theme: {
-    extend: {},
+export const darkMode = 'class';
+export const content = [
+  "./index.html",
+  "./src/**/*.{js,ts,jsx,tsx}",
+];
+export const theme = {
+  screens: {
+    sm: '480px',
+    md: '768px',
+    lg: '976px',
+    xl: '1440px',
   },
-  plugins: [],
-}
+  extend: {
+    spacing: {
+      '128': '32rem',
+      '144': '36rem',
+    },
+  }
+};
 
